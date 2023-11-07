@@ -1,0 +1,185 @@
+[
+    {
+        "id": "75c30f51acf6b919",
+        "type": "tab",
+        "label": "Ultrasonico",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "411e525c8b1c52a1",
+        "type": "mqtt in",
+        "z": "75c30f51acf6b919",
+        "name": "",
+        "topic": "FCAeI/mqtt/GMA/Ultrasonico",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "dbb2841f278f706f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 260,
+        "y": 180,
+        "wires": [
+            [
+                "8d186a45177daf53"
+            ]
+        ]
+    },
+    {
+        "id": "8d186a45177daf53",
+        "type": "json",
+        "z": "75c30f51acf6b919",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 510,
+        "y": 180,
+        "wires": [
+            [
+                "263390dd38ccc8e1"
+            ]
+        ]
+    },
+    {
+        "id": "263390dd38ccc8e1",
+        "type": "function",
+        "z": "75c30f51acf6b919",
+        "name": "Distancia",
+        "func": "msg.payload=msg.payload.dist;\nmsg.topic=\"Distancia\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 180,
+        "wires": [
+            [
+                "e250542dd1bed8fc",
+                "7b9d70e360c17765"
+            ]
+        ]
+    },
+    {
+        "id": "e250542dd1bed8fc",
+        "type": "ui_gauge",
+        "z": "75c30f51acf6b919",
+        "name": "Distancia",
+        "group": "98840995b23057bf",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Distancia:",
+        "label": " cm",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "400",
+        "colors": [
+            "#ef2929",
+            "#e6e600",
+            "#8ae234"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 900,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "7b9d70e360c17765",
+        "type": "ui_chart",
+        "z": "75c30f51acf6b919",
+        "name": "Historico Distancia",
+        "group": "98840995b23057bf",
+        "order": 1,
+        "width": "6",
+        "height": "6",
+        "label": "Historico Distancia",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 950,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dbb2841f278f706f",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "98840995b23057bf",
+        "type": "ui_group",
+        "name": "Distancia",
+        "tab": "757572c5208cbaaf",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "757572c5208cbaaf",
+        "type": "ui_tab",
+        "name": "Ultrasonico",
+        "icon": "dashboard",
+        "order": 7,
+        "disabled": false,
+        "hidden": false
+    }
+]
